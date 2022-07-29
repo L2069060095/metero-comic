@@ -1,0 +1,20 @@
+.adm-tabs {
+    .adm-tabs-header {
+        width : 200px;
+        border: 0px;
+
+        .adm-tabs-tab-list {
+            .adm-tabs-tab {
+                color: lightgray;
+            }
+
+            .adm-tabs-tab-active {
+                color: black;
+            }
+
+            .adm-tabs-tab-line {
+                background: var(--adm-color-warning);
+            }
+        }
+    }
+}

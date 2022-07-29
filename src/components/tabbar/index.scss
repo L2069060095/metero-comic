@@ -1,0 +1,10 @@
+.adm-tab-bar {
+    position        : fixed;
+    bottom        : 0px;
+    width           : 100%;
+    background-color: white;
+    border-top: 1px solid lightgray;
+    .adm-tab-bar-item-active {
+        color: var(--adm-color-warning);
+    }
+}
