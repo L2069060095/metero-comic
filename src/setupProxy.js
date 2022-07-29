@@ -1,6 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const apiProxy = createProxyMiddleware('', {
+const apiProxy = createProxyMiddleware('/v', {
     target: 'https://www.kuaikanmanhua.com',
     changeOrigin: true,
 });
