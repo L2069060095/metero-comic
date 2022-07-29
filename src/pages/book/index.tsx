@@ -6,7 +6,7 @@ function Book() {
   return (
     <div>
       <Tabs>
-        <Tabs.Tab title="发现" key="find">
+        <Tabs.Tab title="发现1111" key="find">
           <Find></Find>
         </Tabs.Tab>
         <Tabs.Tab title="热门" key="hot">
