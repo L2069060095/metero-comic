@@ -9,7 +9,7 @@ function Book() {
         <Tabs.Tab title="发现" key="find">
           <Find></Find>
         </Tabs.Tab>
-        <Tabs.Tab title="热门" key="hot">
+        <Tabs.Tab title="热门0000" key="hot">
           热门
         </Tabs.Tab>
         <Tabs.Tab title="关注" key="follow">
