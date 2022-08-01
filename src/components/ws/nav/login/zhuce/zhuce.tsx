@@ -67,7 +67,7 @@ const Login: FC = () => {
             <Form
                 layout='horizontal'
                 onFinish={onFinish}
-                style={{ width: "55%", marginLeft: "25%" }}
+                style={{ width: "50%", marginLeft: "25%" }}
                 className="from"
             >
                 <Form.Item
