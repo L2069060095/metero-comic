@@ -26,7 +26,7 @@ function useFetch<S = any>(params?: any, execute: boolean = true) {
                     method: 'get',
                     headers: {
                         'Accept': 'application/json, text/plain, */*'
-                    }
+                    },
                 })
             }
             else if (params.method.toUpperCase() === "POST") {
