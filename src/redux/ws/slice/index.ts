@@ -18,7 +18,7 @@ export const counterSlice = createSlice({
         },
         deluser: (state: any, newuser: any) => {
             state.userdatas = state.userdatas.filter((item: any) => {
-                return item.username === newuser.username
+                return item.payload.payload.username === newuser.payload
             })
         },
     },

@@ -23,7 +23,7 @@ const Me: FC<any> = (props): any => {
     return (
         <div>
             <Nav></Nav>    
-            <button>点击获取</button>
+            {/* <button>点击获取</button> */}
         </div>
     )
 }

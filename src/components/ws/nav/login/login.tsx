@@ -31,11 +31,10 @@ const Login: FC = () => {
             paramsObj: values
         })
         console.log(result)//返回当前的登录数据，包括登录的提示信息，和当前登录的用户信息
-        dispatch(adduser({type:"ws_userdatas/adduser",payload:result.data.userdata}))//存储到分片中
         // 提示成功与否
         setTimeout(() => {
             if (result.data.code == 666) {
-                // getuserdatas()
+                dispatch(adduser({type:"ws_userdatas/adduser",payload:result.data.userdata}))//存储到分片中
                 Modal.show({
                     content: result.data.text + "自动跳转页面！",
                     showCloseButton: true,
@@ -80,12 +79,12 @@ const Login: FC = () => {
             <SpinLoading color="orange" style={{marginTop:"25%",marginLeft:"49%"}}></SpinLoading>
         </Mask> */}
         <Nav2></Nav2>
-        <div style={{ width: "40%", height: "60%", float: "left", marginLeft: "30%", marginTop: "6%", backgroundColor: "#fff", borderRadius: "10%" }}>
-            <Image className="img" style={{ width: "20%", height: "20%", marginLeft: "40%", marginBottom: "12%" }} src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo"></Image>
+        <div style={{ width: "80%", height: "50%", float: "left", marginLeft: "10%", marginTop: "25%", backgroundColor: "#fff", borderRadius: "10%" }}>
+            <Image className="img" style={{ width: "25%", height: "25%", marginLeft: "40%", marginBottom: "12%" }} src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo"></Image>
             <Form
-                layout='horizontal'
+                layout='vertical'
                 onFinish={onFinish}
-                style={{ width: "50%", marginLeft: "25%" }}
+                style={{ width: "50%", marginLeft: "15%" }}
                 className="from"
             >
                 <Form.Item
@@ -105,14 +104,14 @@ const Login: FC = () => {
                     <Input id="ipt" min={6} max={12} placeholder='请输入密码' type="password" style={{ "--font-size": "4px" }} clearable onFocus={() => setimg(!img)} onBlur={() => setimg(!img)} />
                 </Form.Item>
 
-                <Button block type='submit' color='warning' style={{ width: "80%", height: "300%", marginLeft: "10%", marginBottom: "10%", padding: "2%", marginTop: "20%" }} loading="auto" >
+                <Button block type='submit' color='warning' style={{ width: "50%", height: "300%", marginLeft: "50%", marginBottom: "10%", padding: "2%", marginTop: "20%" }} loading="auto" >
                     <p style={{ fontSize: "15px", margin: "0px" }}>GO</p>
                 </Button>
-                <a href="/zhuce" style={{ marginLeft: "37%", fontSize: "14px", color: "#666" }} >注册账号？</a>
+                <a href="/zhuce" style={{ marginLeft: "50%", fontSize: "14px", color: "#666" }} >注册账号？</a>
             </Form>
 
-            {img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_open.72c00877.png"} style={{ width: "20%", marginTop: "-18%", borderRadius: "10%" }}></Image>}
-            {!img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_close.0efad8c4.png"} style={{ width: "20%", marginTop: "-18%", borderRadius: "10%" }} lazy></Image>}
+            {img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_open.72c00877.png"} style={{ width: "25%", marginTop: "-22%", borderRadius: "10%" }}></Image>}
+            {!img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_close.0efad8c4.png"} style={{ width: "25%", marginTop: "-22%", borderRadius: "10%" }} lazy></Image>}
         </div>
     </div >
 }

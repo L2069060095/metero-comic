@@ -62,19 +62,19 @@ const Login: FC = () => {
 
     return <div>
         <Nav2></Nav2>
-        <div style={{ width: "40%", height: "50%", float: "left", marginLeft: "30%", marginTop: "6%", backgroundColor: "#fff", borderRadius: "10%", boxShadow: "inherit" }}>
-           <Image className="img" style={{width:"20%",height:"20%",marginLeft:"40%",marginBottom:"8%"}} src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo"></Image>
+        <div style={{ width: "80%", height: "40%", float: "left", marginLeft: "10%", marginTop: "20%", backgroundColor: "#fff", borderRadius: "10%" }}>
+           <Image className="img" style={{width: "24%", height: "24%", marginLeft: "40%", marginBottom: "12%"}} src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo"></Image>
             <Form
-                layout='horizontal'
+                layout='vertical'
                 onFinish={onFinish}
-                style={{ width: "50%", marginLeft: "25%" }}
+                style={{ width: "50%", marginLeft: "15%" }}
                 className="from"
             >
                 <Form.Item
                     name='img'
                     label='狗头'
                     rules={[{ required: true, message: '头像不能为空' }]}
-                    style={{ height: '8%',fontSize:"14px" }}
+                    style={{ height: '2%'}}
                 >
                     <ImageUploader
                         value={fileList}
@@ -82,7 +82,7 @@ const Login: FC = () => {
                         upload={mockUpload}
                         multiple={false}
                         maxCount={1}
-                        style={{ "--cell-size": "60px" }}
+                        style={{ "--cell-size": "60px" ,marginLeft:"60%",marginTop:"-20%"}}
                     />
                 </Form.Item>
                 <Form.Item
@@ -102,7 +102,7 @@ const Login: FC = () => {
                     <Input id="ipt" min={6} max={12} placeholder='请输入密码' type="password" style={{ "--font-size": "4px" }} clearable onFocus={() => setimg(!img)} onBlur={() => setimg(!img)} />
                 </Form.Item>
 
-                <Button block type='submit' color='warning' style={{ width: "80%", height: "300%", marginLeft: "10%", marginBottom: "10%", padding: "2%", marginTop: "20%" }} loading="auto" onClick={() => {
+                <Button block type='submit' color='warning' style={{ width: "50%", height: "300%", marginLeft: "50%", marginBottom: "10%", padding: "2%", marginTop: "20%" }} loading="auto" onClick={() => {
                     new Promise((resolve, reject) => {
                         resolve("6")
                     })
@@ -113,8 +113,8 @@ const Login: FC = () => {
             </Form>
 
 
-            {img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_open.72c00877.png"} style={{ width: "20%", marginTop: "-18%", borderRadius: "10%" }}></Image>}
-            {!img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_close.0efad8c4.png"} style={{ width: "20%", marginTop: "-18%", borderRadius: "10%" }} lazy></Image>}
+            {img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_open.72c00877.png"} style={{ width: "25%", marginTop: "-22%", borderRadius: "10%" }}></Image>}
+            {!img && <Image src={"https://s1.hdslb.com/bfs/seed/jinkela/short/mini-login/img/22_close.0efad8c4.png"} style={{ width: "25%", marginTop: "-22%", borderRadius: "10%" }} lazy></Image>}
         </div>
     </div >
 }

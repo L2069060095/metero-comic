@@ -20,7 +20,7 @@ const Nav2: FC = () => {
 
 
     return <div>
-        <NavBar className="nav" onBack={back} backArrow={true} left={<img src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo" style={{ width: "8%", height: "8%", marginLeft: "10%"}} ></img>}>
+       <NavBar className="nav" onBack={back} backArrow={true} left={<img src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo" style={{ width: "23%", height: "23%",marginLeft:"-14%" }} ></img>}>
            
         </NavBar>
     </div>
