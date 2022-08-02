@@ -1,0 +1,49 @@
+.page {
+    margin-bottom: 60px;
+}
+
+.result {
+    text-align   : center;
+    height       : 30px;
+    line-height  : 30px;
+    font-size    : 25px;
+    font-weight  : bold;
+    margin-top   : 20px;
+    margin-bottom: 20px;
+}
+
+.bookitem {
+    margin-left: 32.5px;
+    width: 320px;
+    border-radius: 10px 10px 0 0;
+    box-shadow : 0 0 3px #999;
+
+    span {
+        margin-left : 10px;
+        margin-right: 10px;
+        font-size   : 20px;
+        background  : rgba(0, 0, 0, 0.5);
+        color       : #fff;
+    }
+
+    .title {
+        font-size    : 20px;
+        margin-top   : 10px;
+        margin-bottom: 15px;
+        margin-left  : 10px;
+        overflow     : hidden;
+        /*超出隐藏*/
+        text-overflow: ellipsis;
+        /*隐藏后添加省略号*/
+        white-space  : nowrap;
+    }
+
+    .author {
+        font-size    : 20px;
+        margin-bottom: 20px;
+        margin-left  : 10px;
+        overflow     : hidden;
+        text-overflow: ellipsis;
+        white-space  : nowrap;
+    }
+}

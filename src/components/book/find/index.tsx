@@ -43,6 +43,7 @@ const Find: FC = () => {
   const GetHomelist = async () => {
     let result = await fetchData({
       method: "get",
+
       url: "/v2/pweb/home",
     });
     // 数据测试
@@ -95,6 +96,8 @@ const Find: FC = () => {
       }}
     >
       <Image src={item.image_url} fit="fill" />
+
+ 
     </Swiper.Item>
   ));
 
