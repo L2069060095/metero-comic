@@ -9,7 +9,7 @@ import md5 from "md5"
 import { useSelector, useDispatch } from 'react-redux'
 
 //之前counterSlice导出的方法就直接用在组件上 直接引入指定切片中定义的方法
-import { adduser, deluser } from "../../../../redux/ws/slice"
+import { adduser, deluser ,addhistory} from "../../../../redux/ws/slice"
 
 
 const Login: FC = () => {
@@ -34,7 +34,8 @@ const Login: FC = () => {
         // 提示成功与否
         setTimeout(() => {
             if (result.data.code == 666) {
-                dispatch(adduser({type:"ws_userdatas/adduser",payload:result.data.userdata}))//存储到分片中
+                dispatch(adduser({type:"ws_userdatas/adduser",newuser:result.data.userdata}))//存储到分片中
+                dispatch(addhistory({type:"ws_userdatas/addhistory",newhistory:[{id:"漫画ID",title:"漫画名",vertiacl_img_url:"漫画封面图片"}]}))//浏览记录存储到分片中
                 Modal.show({
                     content: result.data.text + "自动跳转页面！",
                     showCloseButton: true,

@@ -67,7 +67,7 @@ const Login: FC = () => {
             <Form
                 layout='vertical'
                 onFinish={onFinish}
-                style={{ width: "50%", marginLeft: "15%" }}
+                style={{ width: "50%", marginLeft: "15%"}}
                 className="from"
             >
                 <Form.Item
@@ -89,7 +89,7 @@ const Login: FC = () => {
                     name='username'
                     label='用户名'
                     rules={[{ required: true, message: '用户名不能为空' }]}
-                    style={{ height: '8%',fontSize:"14px" }}
+                    style={{ height: '8%',fontSize:"10px" }}
                 >
                     <Input id="ipt1" min={6} max={12} placeholder='请输入用户名' clearable style={{ "--font-size": "2px" }} />
                 </Form.Item>
@@ -97,7 +97,7 @@ const Login: FC = () => {
                     name='password'
                     label='密码'
                     rules={[{ required: true, message: '密码不能为空' }]}
-                    style={{ height: '8%',fontSize:"14px" }}
+                    style={{ height: '8%',fontSize:"10px" }}
                 >
                     <Input id="ipt" min={6} max={12} placeholder='请输入密码' type="password" style={{ "--font-size": "4px" }} clearable onFocus={() => setimg(!img)} onBlur={() => setimg(!img)} />
                 </Form.Item>
