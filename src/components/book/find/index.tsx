@@ -23,7 +23,7 @@ export default function Find() {
       method: "get",
       url: '/v2/pweb/home',
     })
-    console.log(result)
+  
   }
   
   useEffect(()=>{

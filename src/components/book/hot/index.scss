@@ -1,0 +1,26 @@
+
+.adm-tabs {
+    .adm-tabs-header {
+        width : 235px;
+        border: 0px;
+
+        .adm-tabs-tab-list {
+            .adm-tabs-tab {
+                color: lightgray;
+            }
+
+            .adm-tabs-tab-active {
+                color: lightgray;
+                font-size: 20px;
+            }
+
+            .adm-tabs-tab-line {
+                background: var(--adm-color-warning);
+            }
+        }
+    }
+}
+.adm-list{
+    --border-top: solid 0px var(--adm-color-border);
+    --border-bottom: solid 0px var(--adm-color-border);
+}
