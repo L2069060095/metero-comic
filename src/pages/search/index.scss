@@ -1,0 +1,116 @@
+.cancel {
+    font-size    : 14px;
+    font-weight  : bold;
+    padding-right: 5%;
+}
+
+.history {
+    padding-left: 5%;
+}
+
+.historyItem {
+    margin-top : 20px;
+    margin-left: 18px;
+
+    text-align   : center;
+    color        : orange;
+    font-size    : 18px;
+    display      : inline-block;
+    overflow     : hidden;
+    /*超出隐藏*/
+    text-overflow: ellipsis;
+    /*隐藏后添加省略号*/
+    white-space  : nowrap;
+    /*强制不换行*/
+}
+
+
+.del {
+    overflow     : hidden;
+    float        : right;
+    padding-right: 5%;
+}
+
+.card {
+
+    box-shadow: 0 0 3px #aaa;
+    margin    : 0 auto;
+    margin-top: 30px;
+    width     : 88%;
+    height    : 260px;
+
+
+    .title {
+        font-size    : 16px;
+        // text-align: center;
+        width        : 40%;
+        width        : 50%;
+        height       : 24px;
+        line-height  : 24px;
+        display      : inline-block;
+        margin-bottom: 15px;
+        overflow     : hidden;
+        /*超出隐藏*/
+        text-overflow: ellipsis;
+        /*隐藏后添加省略号*/
+        white-space  : nowrap;
+    }
+}
+
+.content {
+    height         : 320px;
+    width          : 80%;
+    margin         : 0 auto;
+    margin-top     : 30px;
+    color          : #ffffff;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    font-size      : 48px;
+    user-select    : none;
+}
+
+
+
+.sort {
+    margin-top: 20px;
+
+    .tlt {
+        font-size   : 18px;
+        color       : #ccc;
+        padding-left: 20px;
+    }
+}
+
+
+
+ul {
+    list-style-type: none;
+    display        : flex;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    margin-bottom  : 60px;
+
+    li {
+        margin-right: 10px;
+    }
+}
+
+
+
+.p_title {
+    padding-left : 40px;
+    width        : 100px;
+    height       : 20px;
+    line-break   : 20px;
+    word-wrap    : break-word;
+    /*强制换行*/
+    overflow     : hidden;
+    /*超出隐藏*/
+    text-overflow: ellipsis;
+    /*隐藏后添加省略号*/
+    white-space  : nowrap;
+    /*强制不换行*/
+
+
+}

@@ -21,7 +21,7 @@ export default function Find() {
   const GetHomelist=async()=>{
     let result=await fetchData({
       method: "get",
-      url: '/v2/pweb/home',
+      url: '/api/v2/pweb/home',
     })
     console.log(result)
   }
