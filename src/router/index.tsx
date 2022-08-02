@@ -4,6 +4,7 @@ import Me from "../pages/me";
 import World from "../pages/world";
 import Book from "../pages/book";
 import YCdetail from "../pages/hl/ycdetail";
+import Test from "../pages/test"
 
 
 function RouterMap(){
@@ -13,6 +14,7 @@ function RouterMap(){
              <Route path="/world" element={<World></World>}></Route>
              <Route path="/me" element={<Me></Me>}></Route>
              <Route path="/ycdetail" element={<YCdetail></YCdetail>}></Route>
+             <Route path="/test" element={<Test></Test>}></Route>
         </Routes>
     )
 }
