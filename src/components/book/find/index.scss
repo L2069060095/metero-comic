@@ -1,0 +1,161 @@
+.container {
+  .top {
+    .adm-capsule-tabs {
+      .adm-capsule-tabs-header {
+        .adm-capsule-tabs-tab-list {
+          .adm-capsule-tabs-tab-wrapper {
+            .adm-capsule-tabs-tab {
+              padding: 2px 12px;
+            }
+
+            .adm-capsule-tabs-tab-active {
+              background-color: var(--adm-color-warning);
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .YC {
+    .YC_header {
+      .adm-grid {
+        height: 40px;
+
+        // background-color: aqua;
+        .adm-grid-item {
+          line-height: 40px;
+          text-align : center;
+        }
+      }
+    }
+
+    .YC_body {
+      display        : flex;
+      flex-wrap      : wrap;
+      justify-content: space-between;
+
+      .YC_body_item {
+        position           : relative;
+        border-radius      : 5px;
+        // background-color: aqua;
+        width              : 32%;
+        height             : 120px;
+
+        .adm-image {
+          .adm-image-img {
+            border-radius: 5px;
+            height       : 100px;
+
+          }
+
+        }
+
+        .imgfooter {
+          color          : white;
+          position       : absolute;
+          top            : 86px;
+          border-radius  : 0px 0px 5px 5px;
+          box-shadow     : 0px -10px 10px gray inset;
+          // float: left;
+          font-size      : 10px;
+          width          : 100%;
+          display        : flex;
+          justify-content: space-between;
+
+          .nickname {
+            float      : left;
+            margin-left: 2px;
+          }
+
+        }
+
+      }
+    }
+  }
+
+  .ST {
+    margin-top: 10px;
+
+    .ST_header {
+      font-size    : 20px;
+      padding      : 10px 0px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .ST_body {
+      background-color   : #eee;
+      // padding-top     : 10px;
+
+      .ST_body_item {
+
+        margin-bottom   : 10px;
+        background-color: white;
+
+        // border-radius: 5px;
+        .ST_body_item_header {
+          padding-top    : 10px;
+          padding-bottom : 10px;
+          display        : flex;
+          justify-content: space-between;
+
+          .ST_body_item_header_title {
+            font-size  : 15px;
+            font-weight: 700;
+
+          }
+
+          button {
+            background-color: white;
+            border          : 1px solid lightgray;
+            border-radius   : 20px;
+            font-size       : 10px;
+            // padding:1px 5px;
+            margin-right    : 2px;
+            display         : block;
+
+          }
+        }
+
+        .adm-space {
+          margin-bottom: 5px;
+
+          .adm-space-item {
+            .adm-tag {
+              color           : #444;
+              background-color: #eee;
+              border          : 0px;
+              padding         : 3px 4px;
+
+            }
+          }
+        }
+
+        .adm-image {
+          .adm-image-img {
+            border-radius: 15px;
+          }
+        }
+
+        .ST_body_item_footer {
+          padding-top    : 10px;
+          padding-bottom : 10px;
+          display        : flex;
+          justify-content: space-between;
+
+          .nickname {
+            font-size: 15px;
+          }
+
+          .likes_count {
+            margin-right: 5px;
+            font-size   : 15px;
+          }
+        }
+      }
+    }
+  }
+
+  
+}

@@ -15,7 +15,6 @@ function Book() {
         <Tabs.Tab title="关注" key="follow">
           关注
         </Tabs.Tab>
-        
       </Tabs>
     </div>
   );
