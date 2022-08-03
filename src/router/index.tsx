@@ -14,6 +14,7 @@ import Slist from "../components/search/list";
 // ws
 import Login from "../components/ws/nav/login/login";
 import Zhuce from "../components/ws/nav/login/zhuce/zhuce";
+import BD from "../pages/bookdetail";
 
 function RouterMap() {
   return (
@@ -26,10 +27,10 @@ function RouterMap() {
       {/* ws */}
       <Route path="/login" element={<Login></Login>}></Route>
       <Route path="/zhuce" element={<Zhuce></Zhuce>}></Route>
-
       <Route path="/search" element={<Search></Search>}></Route>
       <Route path="/detail" element={<Detail></Detail>}></Route>
       <Route path="/ser_detail" element={<Slist></Slist>}></Route>
+      <Route path="/bookdetail" element={<BD></BD>}></Route>
     </Routes>
   );
 }
