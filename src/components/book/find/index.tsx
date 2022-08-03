@@ -12,11 +12,7 @@ import {
 } from "antd-mobile";
 import "./index.scss";
 import useFetch from "../../../hooks/useFetch";
-import {
-  AntOutline,
-  RightOutline,
-  EyeInvisibleOutline,
-} from "antd-mobile-icons";
+import { HeartFill, EyeInvisibleOutline } from "antd-mobile-icons";
 import { useNavigate } from "react-router";
 
 const Find: FC = () => {
@@ -33,6 +29,9 @@ const Find: FC = () => {
   const [placement, setPlacement] = useState("top");
 
   let [isActive, seisActiv] = useState(0);
+
+  let [currentid, setcurrentid] = useState(0);
+
   let [YClist, setYClist] = useState<any>([]);
   let [discovery_modules, setdiscovery_modules] = useState([]);
   let [popularity_topics, setpopularity_topics] = useState([]);
@@ -96,35 +95,45 @@ const Find: FC = () => {
       }}
     >
       <Image src={item.image_url} fit="fill" />
-
- 
     </Swiper.Item>
   ));
 
   function Follow(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
+    // return <button>关注</button>
+    while (props.currentid==props.id) {
+      if (props.isLoggedIn) {
+        return (
+          <HeartFill
+            color="var(--adm-color-warning)"
+            fontSize={20}
+            onClick={() => {
+              setisLoggedIn(!isLoggedIn);
+              console.log(props.index)
+            }}
+          />
+        );
+      } else
+        return (
+          <button
+            onClick={() => {
+              setisLoggedIn(!isLoggedIn);
+            }}
+          >
+            关注
+          </button>
+        );
+    }
+    while (props.currentid!=props.id) {
       return (
-        <Button
-          onClick={(e) => {
-            setisLoggedIn(!isLoggedIn);
-            console.log(e);
-          }}
+        <button
+          // onClick={() => {
+          //   // setisLoggedIn(!isLoggedIn);
+          // }}
         >
-          1
-        </Button>
+          关注
+        </button>
       );
-    } else
-      return (
-        <Button
-          onClick={() => {
-            setisLoggedIn(!isLoggedIn);
-            console.log(isLoggedIn);
-          }}
-        >
-          2
-        </Button>
-      );
+    }
   }
 
   return (
@@ -192,11 +201,19 @@ const Find: FC = () => {
         </div>
         <div className="YC_body">
           {YClist.slice(1, 7).map((item, index) => (
-            <div key={index} className="YC_body_item">
-              <Image src={item.cover_image_url} fit="cover" />
-              <div>{item.title}</div>
+            <div key={index} className="YC_body_item" >
+              <Image src={item.cover_image_url} fit="cover" onClick={()=>{
+              console.log(item.id)
+              navigate(`/detail?id=${item.id}`)
+            }}/>
+              <div onClick={()=>{
+              console.log(item.id)
+              navigate(`/detail?id=${item.id}`)
+            }}>{item.title}</div>
               <div className="imgfooter">
-                <div className="nickname">{item.user.nickname}</div>
+                <div className="nickname" onClick={()=>{
+                  navigate(`/user?id=${item.user.user_id}`)
+                }}>{item.user.nickname}</div>
                 <div className="likes_count">{item.likes_count}</div>
               </div>
               {/* <ul>
@@ -217,10 +234,18 @@ const Find: FC = () => {
         <div className="ST_header">这漫画令我上头！</div>
         <div className="ST_body">
           {discovery_modules.map((item, index) => (
-            <div className="ST_body_item" key={index}>
+            <div className="ST_body_item" key={index}  onClick={() => {
+              setcurrentid(item.id);
+              console.log(item.id,'1234')
+              console.log(currentid,'111');
+            }}>
               <div className="ST_body_item_header">
                 <div className="ST_body_item_header_title">{item.title}</div>
-                <Follow isLoggedIn={isLoggedIn}></Follow>
+                <Follow
+                  currentid={currentid}
+                  isLoggedIn={isLoggedIn}
+                  id={item.id}
+                ></Follow>
               </div>
               <Space>
                 {item.tags.map((tagsitem, tagsindex) => (

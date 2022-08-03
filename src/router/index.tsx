@@ -5,6 +5,7 @@ import World from "../pages/world";
 import Book from "../pages/book";
 
 import YCdetail from "../pages/hl/ycdetail";
+import User from "../pages/user";
 import Test from "../pages/test";
 
 import Search from "../pages/search";
@@ -23,6 +24,7 @@ function RouterMap() {
       <Route path="/world" element={<World></World>}></Route>
       <Route path="/me" element={<Me></Me>}></Route>
       <Route path="/ycdetail" element={<YCdetail></YCdetail>}></Route>
+      <Route path="/user" element={<User></User>}></Route>
       <Route path="/test" element={<Test></Test>}></Route>
       {/* ws */}
       <Route path="/login" element={<Login></Login>}></Route>
