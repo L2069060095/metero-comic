@@ -27,36 +27,58 @@ export const counterSlice = createSlice({
         //添加历史记录
         addhistory: (state: any, newhistory: any) => {
             state.userdatas[0].history = newhistory
+
+            if (state.userdatas[0].history === undefined) {
+                state.userdatas[0].history = newhistory
+            }
+            else {
+                state.userdatas[0].history.payload.newhistory.push(newhistory.payload.newhistory[0])
+            }
         },
 
         // 删除历史记录
         delhistory: (state: any, delhistory: any) => {
             state.userdatas[0].history.payload.newhistory = state.userdatas[0].history.payload.newhistory.filter((item: any) => {
-                return item.id === delhistory.id
+                return item.id != delhistory.payload.id
             })
         },
 
         // 添加收藏
         addCollection: (state: any, newcollection: any) => {
-            state.userdatas[0].collection = newcollection
+            if (state.userdatas[0].collection === undefined) {
+                state.userdatas[0].collection = newcollection
+                console.log(typeof state.userdatas[0].caricature)
+            }
+            else {
+                state.userdatas[0].collection.payload.newcollection.push(newcollection.payload.newcollection[0])
+            }
         },
 
         // 删除收藏
         delCollection: (state: any, caricatureId: any) => {
             state.userdatas[0].collection.payload.newcollection = state.userdatas[0].collection.payload.newcollection.filter((item: any) => {
-                return item.id === caricatureId.id
+                //    删除不满足条件的对象
+                return item.id != caricatureId.payload.id
             })
         },
 
         // 添加漫画
         addCaricature: (state: any, newcaricature: any) => {
-            state.userdatas[0].caricature = newcaricature
+            console.log(newcaricature)
+            if (state.userdatas[0].caricature===undefined) {
+                state.userdatas[0].caricature = newcaricature
+                console.log(typeof state.userdatas[0].caricature)
+            }
+            else{
+                state.userdatas[0].caricature.payload.newcaricature.push(newcaricature.payload.newcaricature[0])
+            }
         },
 
         // 删除漫画
         delCaricature: (state: any, caricatureId: any) => {
             state.userdatas[0].caricature.payload.newcaricature = state.userdatas[0].caricature.payload.newcaricature.filter((item: any) => {
-                return item.id === caricatureId.id
+                //    删除不满足条件的对象
+                return item.id != caricatureId.payload.id
             })
         },
     },
@@ -64,7 +86,7 @@ export const counterSlice = createSlice({
 
 // 为每个 reducer 函数生成动作创建器（Action creators），action是就相当于是一个指令，根据这个指令，来进行相应的操作
 //这里export的方法是为了给counter组件，而不是给redux或store
-export const { adduser, deluser, addhistory,delhistory,addCollection,delCollection,addCaricature,delCaricature} = counterSlice.actions
+export const { adduser, deluser, addhistory, delhistory, addCollection, delCollection, addCaricature, delCaricature } = counterSlice.actions
 
 //export给store
 export default counterSlice.reducer

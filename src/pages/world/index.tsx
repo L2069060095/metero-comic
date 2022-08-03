@@ -19,21 +19,21 @@ function World() {
   }
 
   const addcollection:any=()=>{
-    dispatch(addCollection({type:"ws_userdatas/addCollection",newcollection:[{id:"漫画ID----addcollection",title:"漫画名---addcollection",vertiacl_img_url:"漫画封面图片"}]}))
+    dispatch(addCollection({type:"ws_userdatas/addCollection",newcollection:[{id:"222",title:"漫画名---addcollection",vertiacl_img_url:"漫画封面图片"}]}))
   }
 
   const delcollection:any=()=>{
     console.log(userdatas[0].collection.payload.newcollection[0].id)
-    dispatch(delCollection({type:"ws_userdatas/delCollection",id:userdatas[0].collection.payload.newcollection[0].id}))
+    dispatch(delCollection({type:"ws_userdatas/delCollection",id:"111"}))
   }
 
   const addcaricature:any=()=>{
-    dispatch(addCaricature({type:"ws_userdatas/addCaricature",newcaricature:[{id:"漫画ID----newcaricature",title:"漫画名---newcaricature",vertiacl_img_url:"漫画封面图片"}]}))
+    dispatch(addCaricature({type:"ws_userdatas/addCaricature",newcaricature:[{id:"444",title:"漫画名---newcaricature",vertiacl_img_url:"漫画封面图片"}]}))
   }
 
   const delcaricature:any=()=>{
     console.log(userdatas[0].caricature.payload.newcaricature[0].id)
-    dispatch(delCaricature({type:"ws_userdatas/delCaricature",id:userdatas[0].caricature.payload.newcaricature[0].id}))
+    dispatch(delCaricature({type:"ws_userdatas/delCaricature",id:"444"}))
   }
 
   return <div>世界
