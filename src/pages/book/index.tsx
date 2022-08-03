@@ -6,6 +6,7 @@ import { SearchOutline } from "antd-mobile-icons";
 import { useNavigate } from "react-router";
 import Hot from "../../components/book/hot/index";
 import useFetch from "../../hooks/useFetch";
+import FL from "../../components/book/follow";
 
 function Book() {
   const { loading: hloading, data: hdata } = useFetch({
@@ -38,9 +39,9 @@ function Book() {
       >
         快看漫画
       </NavBar> */}
-      <div className="searchlogo" style={{ fontSize: 24 }} >
+      <div className="searchlogo" style={{ fontSize: 24 }}>
         <Space style={{ "--gap": "16px" }}>
-          <SearchOutline onClick={() =>navigate(`/search`)} />
+          <SearchOutline onClick={() => navigate(`/search`)} />
         </Space>
       </div>
       <Tabs>
@@ -50,8 +51,8 @@ function Book() {
         <Tabs.Tab title="热门" key="hot">
           {!hloading && <Hot list={hdata}></Hot>}
         </Tabs.Tab>
-        <Tabs.Tab title="关注" key="follow">
-          关注
+        <Tabs.Tab title="关注" key="follow" >
+          <FL></FL>
         </Tabs.Tab>
       </Tabs>
     </div>

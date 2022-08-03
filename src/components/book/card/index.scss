@@ -1,0 +1,33 @@
+.Card {
+    padding      : 5px;
+    box-shadow   : 2px 2px 5px lightgray;
+    overflow     : hidden;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    .adm-image {
+        float: left;
+    }
+
+    .Card_right {
+
+
+        .Card_title {
+            font-size : 20px;
+            margin-top: 5px;
+            overflow        : hidden;
+            padding-left: 10px;
+        }
+
+        .Card_description {
+            padding-left: 5px;
+            margin-top      : 5px;
+            overflow        : hidden;
+            text-overflow   : ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            // word-break: break-all;
+            -webkit-box-orient: vertical;
+        }
+    }
+}

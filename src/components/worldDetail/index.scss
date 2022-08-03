@@ -1,0 +1,64 @@
+.data{
+    .userTitle{
+        margin: 8px 0 5px 30px;
+        font-size: 20px;
+    }
+    padding: 0 0 50px 0;
+    font-size: 15px;
+    .userdata{
+        margin-left: 20px;
+        .userimg{
+        display:inline-block ;
+           margin-bottom: 10px;
+           height: 30px;
+            .adm-image-img{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 5px 0 0 0
+            }
+        }
+        .nickname{
+            margin-left: 8px;
+            vertical-align: middle;
+            height: 40px;
+            display: inline-block;
+        }
+    }
+    .userCreate{
+        margin: 3px 0;
+        font-size: 15px;
+        span{
+            padding: 2px;
+            border: 1px solid black;
+            margin: 0 5px;
+            color: red;
+
+        }
+    }
+    .userSummary{
+        margin: 10px 0 10px 8px
+    }
+    .originCreate{
+         span{
+            color: red;
+             padding: 3px;
+             border: 1px solid black;
+         }
+    }
+    .labelName{
+        margin: 5px 0;
+        .marks{
+            padding: 2px;
+            border: 1px solid gray;
+            border-radius: 50%;
+            color: rgb(255, 140, 0);
+        }
+    }
+    .userStr{
+        span{
+            margin: 0 5px;
+        }
+    }
+}

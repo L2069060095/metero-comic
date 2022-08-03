@@ -1,0 +1,48 @@
+.adm-grid{
+    background-color: #ccc;
+    .adm-grid-item{
+        margin: 6px;
+        background-color: white;
+        border-radius: 2%;
+        .labelsName{
+            padding: 2px 0;
+            margin-top: 2px;
+            border: 1px solid #ccc;
+            border-radius: 40%;
+            .mark{
+                color: rgb(255, 187, 0);
+                margin: 0 2px
+            }
+            }
+        }
+        .postUser{
+            height: 20px;
+            padding-left: 3px;
+            font-size: 12px;
+            .userImg{
+                top: 2px;
+                width:15px;
+                height:15px;
+                display: inline-block;
+            }
+            .nickname{
+                margin-left: 5px;
+                vertical-align: middle;
+                height: 25px;
+                display: inline-block;
+            }
+        }
+        .postTitle{
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        .likeCount{
+            float: right; 
+            vertical-align: middle;
+            height: 15px;
+            .love{
+               margin-right: 7px;
+            }
+        }
+    }
+

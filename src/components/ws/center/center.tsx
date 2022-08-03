@@ -4,7 +4,9 @@ import {
     PayCircleOutline,
     SetOutline,
 } from 'antd-mobile-icons'
-import { Dropdown, Radio, Space, Swiper, List } from 'antd-mobile'
+import { Dropdown, Space, List, Image, Avatar, } from 'antd-mobile'
+import 'react-virtualized/styles.css' 
+import { List as VirtualizedList, AutoSizer } from 'react-virtualized'
 
 //两个都是react-redux的钩子函数
 import { useSelector, useDispatch } from 'react-redux'
@@ -30,6 +32,20 @@ const Center: FC = (props: any) => {
         navigate("/login")
     }
 
+    // 判断是否存在history
+    var historyflag = false
+    var caricatureflag = false
+    var collectionflag = false
+    for (const iterator in userdatas[0]) {
+        if (iterator === "history") {
+            historyflag = !historyflag
+        } else if (iterator === "caricature") {
+            caricatureflag = !caricatureflag
+        } else if (iterator === "collection") {
+            collectionflag = !collectionflag
+        }
+    }
+
     const img = "https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
 
     return <div style={{ padding: '2%' }}>
@@ -44,10 +60,72 @@ const Center: FC = (props: any) => {
         </div>
         <Dropdown>
             <Dropdown.Item key='sorter' title='浏览记录'>
+                <div>
+                    <List>
+                        {historyflag && userdatas[0].history.payload.newhistory.map(user => (
+                            <List.Item
+                                key={user.name}
+                                prefix={
+                                    <Image
+                                        src={user.vertiacl_img_url}
+                                        style={{ borderRadius: 20 }}
+                                        fit='cover'
+                                        width={60}
+                                        height={60}
+                                    />
+                                }
+                                description={user.name}
+                                style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
+                            >
+                                <p>{user.name}</p>
+                            </List.Item>
+                        ))}
+                    </List>
+                </div>
             </Dropdown.Item>
             <Dropdown.Item key='bizop' title='书架'>
+                <List>
+                    {caricatureflag && userdatas[0].caricature.payload.newcaricature.map(user => (
+                        <List.Item
+                            key={user.name}
+                            prefix={
+                                <Image
+                                    src={user.vertiacl_img_url}
+                                    style={{ borderRadius: 20 }}
+                                    fit='cover'
+                                    width={60}
+                                    height={60}
+                                />
+                            }
+                            description={user.name}
+                            style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
+                        >
+                            {user.name}
+                        </List.Item>
+                    ))}
+                </List>
             </Dropdown.Item>
             <Dropdown.Item key='more' title='收藏'>
+                <List>
+                    {collectionflag && userdatas[0].collection.payload.newcollection.map(user => (
+                        <List.Item
+                            key={user.name}
+                            prefix={
+                                <Image
+                                    src={user.vertiacl_img_url}
+                                    style={{ borderRadius: 20 }}
+                                    fit='cover'
+                                    width={60}
+                                    height={60}
+                                />
+                            }
+                            description={user.name}
+                            style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
+                        >
+                            {user.name}
+                        </List.Item>
+                    ))}
+                </List>
             </Dropdown.Item>
         </Dropdown>
         <div style={{ backgroundColor: "#fff" }}>

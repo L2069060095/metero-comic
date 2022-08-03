@@ -35,7 +35,6 @@ const Login: FC = () => {
         setTimeout(() => {
             if (result.data.code == 666) {
                 dispatch(adduser({type:"ws_userdatas/adduser",newuser:result.data.userdata}))//存储到分片中
-                dispatch(addhistory({type:"ws_userdatas/addhistory",newhistory:[{id:"漫画ID",title:"漫画名",vertiacl_img_url:"漫画封面图片"}]}))//浏览记录存储到分片中
                 Modal.show({
                     content: result.data.text + "自动跳转页面！",
                     showCloseButton: true,
