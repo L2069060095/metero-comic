@@ -23,20 +23,20 @@ import {
 import { useNavigate } from "react-router";
 
 //两个都是react-redux的钩子函数
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
 //之前counterSlice导出的方法就直接用在组件上 直接引入指定切片中定义的方法
-import { delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../../redux/ws/slice"
+// import { delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../../redux/ws/slice"
 
 const Find: FC = () => {
   // 通过useSelector钩子函数，来获取store中指定切片中的数据  就相当于vuex中的mapState函数
-  const userdatas = useSelector((store: any) => store.ws_userdatas.userdatas)
-  // 通过dispatch钩子函数，传入切片中定义的方法，进行数据的操控
-  const dispatch = useDispatch()
+  // const userdatas = useSelector((store: any) => store.ws_userdatas.userdatas)
+  // // 通过dispatch钩子函数，传入切片中定义的方法，进行数据的操控
+  // const dispatch = useDispatch()
 
-  const addcollection = (list, index) => {
-    console.log(list, index)
-    dispatch(addCollection({ type: "ws_userdatas/addCollection", newcollection: [{ id: list[index].id, title: list[index].title, vertiacl_img_url: list[index].cover_image_url }] }))
-  }
+  // const addcollection = (list, index) => {
+  //   console.log(list, index)
+  //   dispatch(addCollection({ type: "ws_userdatas/addCollection", newcollection: [{ id: list[index].id, title: list[index].title, vertiacl_img_url: list[index].cover_image_url }] }))
+  // }
 
   // 轮播图数据
   let [bannerslist, setbannerslist] = useState([]);
@@ -240,9 +240,9 @@ const Find: FC = () => {
                 <div className="ST_body_item_header_title">{item.title}</div>
                 {/* 按钮 */}
                 <Follow isLoggedIn={isLoggedIn}></Follow>
-                <div style={{ color: "orange", fontSize: 26, marginLeft: "70%", float: "left" }} onClick={() => addcollection(discovery_modules, index)}>
+                {/* <div style={{ color: "orange", fontSize: 26, marginLeft: "70%", float: "left" }} onClick={() => addcollection(discovery_modules, index)}>
                   <HeartFill />
-                </div>
+                </div> */}
               </div>
               <Space>
                 {item.tags.map((tagsitem, tagsindex) => (

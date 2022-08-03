@@ -14,6 +14,7 @@ export const counterSlice = createSlice({
     reducers: {
         // 添加到 userdatas 中
         adduser: (state: any, newuser: any) => {
+            console.log(state.userdatas)
             state.userdatas.push(newuser)
         },
 
@@ -30,6 +31,9 @@ export const counterSlice = createSlice({
                 state.userdatas[0].history = newhistory
             }
             else {
+                state.userdatas[0].history.payload.newhistory=state.userdatas[0].history.payload.newhistory.filter((item:any) => {
+                    return item.id!==newhistory.payload.newhistory[0].id
+                })
                 state.userdatas[0].history.payload.newhistory.push(newhistory.payload.newhistory[0])
             }
         },
@@ -43,11 +47,15 @@ export const counterSlice = createSlice({
 
         // 添加收藏
         addCollection: (state: any, newcollection: any) => {
+            console.log(newcollection.payload.newcollection[0].id)
             if (state.userdatas[0].collection === undefined) {
                 state.userdatas[0].collection = newcollection
-                console.log(typeof state.userdatas[0].caricature)
             }
             else {
+                // console.log(state.userdatas[0].collection.payload.newcollection,"xxxxxx")
+                state.userdatas[0].collection.payload.newcollection=state.userdatas[0].collection.payload.newcollection.filter((item:any) => {
+                    return item.id!==newcollection.payload.newcollection[0].id
+                })
                 state.userdatas[0].collection.payload.newcollection.push(newcollection.payload.newcollection[0])
             }
         },
@@ -62,12 +70,15 @@ export const counterSlice = createSlice({
 
         // 添加漫画
         addCaricature: (state: any, newcaricature: any) => {
-            console.log(newcaricature)
-            if (state.userdatas[0].caricature===undefined) {
+            console.log(newcaricature,"666666666666")
+            if (state.userdatas[0].caricature === undefined) {
                 state.userdatas[0].caricature = newcaricature
                 console.log(typeof state.userdatas[0].caricature)
             }
-            else{
+            else {
+                state.userdatas[0].caricature.payload.newcaricature=state.userdatas[0].caricature.payload.newcaricature.filter((item:any) => {
+                    return item.id!==newcaricature.payload.newcaricature[0].id
+                })
                 state.userdatas[0].caricature.payload.newcaricature.push(newcaricature.payload.newcaricature[0])
             }
         },

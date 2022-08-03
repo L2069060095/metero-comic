@@ -15,6 +15,7 @@ import Slist from "../components/search/list";
 import Login from "../components/ws/nav/login/login";
 import Zhuce from "../components/ws/nav/login/zhuce/zhuce";
 import BD from "../pages/bookdetail";
+import Shoucang from "../../src/components/ws/shoucang/shoucang"
 
 function RouterMap() {
   return (
@@ -31,6 +32,7 @@ function RouterMap() {
       <Route path="/detail" element={<Detail></Detail>}></Route>
       <Route path="/ser_detail" element={<Slist></Slist>}></Route>
       <Route path="/bookdetail" element={<BD></BD>}></Route>
+      <Route path="/Shoucang" element={<Shoucang></Shoucang>}></Route>
     </Routes>
   );
 }

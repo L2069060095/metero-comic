@@ -3,14 +3,15 @@ import useFetch from "../../hooks/useFetch";
 import { Image, List, NavBar } from 'antd-mobile'
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { HeartFill,StarFill } from "antd-mobile-icons"
+import { HeartFill, StarFill } from "antd-mobile-icons"
 import "./index.scss"
+import axios from "axios"
 
 //两个都是react-redux的钩子函数
 import { useSelector, useDispatch } from 'react-redux'
 
 //之前counterSlice导出的方法就直接用在组件上 直接引入指定切片中定义的方法
-import { addhistory,delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../redux/ws/slice"
+import { addhistory, delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../redux/ws/slice"
 
 const Detail: FC = () => {
     // 通过useSelector钩子函数，来获取store中指定切片中的数据  就相当于vuex中的mapState函数
@@ -22,7 +23,6 @@ const Detail: FC = () => {
     let [searchParams, setSearchParams] = useSearchParams();
     // console.log(searchParams.get("id"));
     const detail_id = searchParams.get("id")
-
 
 
     const { loading: detailLoading, data: detailData } = useFetch({
@@ -48,9 +48,21 @@ const Detail: FC = () => {
     console.log('xxxxxxxxxxx', detailLoading + "xxx", a);
 
     const addbookstore = () => {
+        axios.post("http://localhost:3000/api/addcaricature", {
+            paramsObj: { username: userdatas[0].payload.newuser.username, password: userdatas[0].payload.newuser.password, img: userdatas[0].payload.newuser.img, caricature: userdatas[0].caricature.payload.newcaricature }//数组
+        })
         dispatch(addCaricature({ type: "ws_userdatas/addCaricature", newcaricature: [{ id: a[0].id, title: a[0].title, vertiacl_img_url: a[0].cover_image_url }] }))
-        dispatch(addhistory({type:"ws_userdatas/addhistory",newhistory:[{id:a[0].id,title:a[0].title,vertiacl_img_url:a[0].cover_image_url}]}))//浏览记录存储到分片中
+        dispatch(addhistory({ type: "ws_userdatas/addhistory", newhistory: [{ id: a[0].id, title: a[0].title, vertiacl_img_url: a[0].cover_image_url }] }))//浏览记录存储到分片中
     }
+
+    // // 添加数据到数据库
+    // const addshoucang = async () => {
+    //     // console.log(userdatas[0].caricature.payload.newcaricature,"6666666666666")
+    //     let result: any = await axios.post("http://localhost:3000/api/addcaricature", {
+    //         paramsObj: userdatas[0].caricature.payload.newcaricature//数组
+    //     })
+    //     console.log(result)
+    // }
 
     return (<div>
 
@@ -65,12 +77,10 @@ const Detail: FC = () => {
                     <span>漫画简介</span>
                     <p>{detailData.topic_info.description}</p>
                 </div>
-                <div style={{ color: "orange", fontSize: 28, marginLeft: "93%",marginTop:"-43%",float:"left"}} onClick={addbookstore}>
+                <div style={{ color: "orange", fontSize: 28, marginLeft: "93%", marginTop: "-43%", float: "left" }} onClick={addbookstore}>
                     <StarFill />
                 </div>
             </div>
-
-            {/* onClick={(bookdatas)=>addbookstore(bookdatas)} */}
 
             <section>
                 <List>
@@ -80,14 +90,10 @@ const Detail: FC = () => {
                             style={{ borderRadius: 10 }}
                             fit='fill'
                             width={168}
-                            height={94} onClick={()=>{
-                                console.log(item.id)
-                                navigate(`/bookdetail?id=${item.id}`)
-                            }}/>
+                            height={94} />
                     }
                         description={item.title}
                     >
-
                     </List.Item>))
 
                     }

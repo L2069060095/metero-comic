@@ -60,72 +60,48 @@ const Center: FC = (props: any) => {
         </div>
         <Dropdown>
             <Dropdown.Item key='sorter' title='浏览记录'>
-                <div>
-                    <List>
-                        {historyflag && userdatas[0].history.payload.newhistory.map(user => (
-                            <List.Item
-                                key={user.name}
-                                prefix={
-                                    <Image
-                                        src={user.vertiacl_img_url}
-                                        style={{ borderRadius: 20 }}
-                                        fit='cover'
-                                        width={60}
-                                        height={60}
-                                    />
-                                }
-                                description={user.name}
-                                style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
-                            >
-                                <p>{user.name}</p>
-                            </List.Item>
-                        ))}
-                    </List>
-                </div>
+                {historyflag && userdatas[0].history.payload.newhistory.map(user => {
+                    return <div key={user.id} style={{ padding: "20px 10px 0px 10px", display: "flex" }}>
+                        <Image
+                            src={user.vertiacl_img_url}
+                            style={{ borderRadius: 20, flex: 1, marginRight: "10px" }}
+                            fit='cover'
+                            width={60}
+                            height={60}
+                        />
+                        <span style={{ color: "orange", fontSize: "14px", flex: 5, marginTop: "20px" }}>{user.title}</span>
+                    </div>
+                }
+                )}
             </Dropdown.Item>
             <Dropdown.Item key='bizop' title='书架'>
-                <List>
-                    {caricatureflag && userdatas[0].caricature.payload.newcaricature.map(user => (
-                        <List.Item
-                            key={user.name}
-                            prefix={
-                                <Image
-                                    src={user.vertiacl_img_url}
-                                    style={{ borderRadius: 20 }}
-                                    fit='cover'
-                                    width={60}
-                                    height={60}
-                                />
-                            }
-                            description={user.name}
-                            style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
-                        >
-                            {user.name}
-                        </List.Item>
-                    ))}
-                </List>
+                {caricatureflag && userdatas[0].caricature.payload.newcaricature.map(user => {
+                    return <div key={user.id} style={{ padding: "20px 10px 0px 10px", display: "flex" }}>
+                        <Image
+                            src={user.vertiacl_img_url}
+                            style={{ borderRadius: 20, flex: 1, marginRight: "10px" }}
+                            fit='cover'
+                            width={60}
+                            height={60}
+                        />
+                        <span style={{ color: "orange", fontSize: "14px", flex: 5, marginTop: "20px" }}>{user.title}</span>
+                    </div>
+                })}
+
             </Dropdown.Item>
             <Dropdown.Item key='more' title='收藏'>
-                <List>
-                    {collectionflag && userdatas[0].collection.payload.newcollection.map(user => (
-                        <List.Item
-                            key={user.name}
-                            prefix={
-                                <Image
-                                    src={user.vertiacl_img_url}
-                                    style={{ borderRadius: 20 }}
-                                    fit='cover'
-                                    width={60}
-                                    height={60}
-                                />
-                            }
-                            description={user.name}
-                            style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
-                        >
-                            {user.name}
-                        </List.Item>
-                    ))}
-                </List>
+                {collectionflag && userdatas[0].collection.payload.newcollection.map(user => {
+                    return <div key={user.id} style={{ padding: "10px 10px 5px 10px", display: "flex" ,borderBottom:"1px solid #eee"}}>
+                        <Image
+                            src={user.vertiacl_img_url}
+                            style={{ borderRadius: 20, flex: 1, marginRight: "10px" }}
+                            fit='cover'
+                            width={60}
+                            height={60}
+                        />
+                        <span style={{ color: "orange", fontSize: "14px", flex: 5, marginTop: "20px" }}>{user.title}</span>
+                    </div>
+                })}
             </Dropdown.Item>
         </Dropdown>
         <div style={{ backgroundColor: "#fff" }}>
