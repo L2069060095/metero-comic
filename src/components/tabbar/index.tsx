@@ -7,7 +7,7 @@ import {
   SmileOutline ,
   SmileFill,
   UserCircleOutline,
-  AppOutline ,
+  AppOutline,
   TeamFill,
   KoubeiFill
 } from "antd-mobile-icons";

@@ -23,7 +23,7 @@ function useFetch<S = any>(params?: any, execute: boolean = true) {
                 const url = objstr ? `${params.url}?${objstr}` : params.url;
                 result = await fetch(url, {
                     credentials: 'include',
-                    method: 'get',
+                    method: 'GET',
                     headers: {
                         'Accept': 'application/json, text/plain, */*'
                     }
@@ -41,6 +41,8 @@ function useFetch<S = any>(params?: any, execute: boolean = true) {
                 })
             }
             if (result.ok === true) {
+                console.log(result,"XXXXXXXXXX");
+                
                 const res = await result.json();
                 setData(res.data)
                 setLoading(false)
@@ -65,7 +67,6 @@ function useFetch<S = any>(params?: any, execute: boolean = true) {
     return { loading, data, error, fetchData }
 }
 
-
 // {name:zhangsan,age:123} ---> name=zhangsan&age=123
 function obj2params(obj: any) {
     var result = '';
@@ -78,6 +79,5 @@ function obj2params(obj: any) {
     }
     return result;
 }
-
 
 export default useFetch;

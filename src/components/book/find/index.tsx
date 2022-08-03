@@ -18,17 +18,17 @@ export default function Find() {
   let [rec_topics, setrec_topics] = useState([]);
   let [ugc_topics, setugc_topics] = useState([]);
   const { loading: loading3, fetchData } = useFetch<any>({},false);
-  const GetHomelist=async()=>{
-    let result=await fetchData({
-      method: "get",
-      url: '/v2/pweb/home',
-    })
-    console.log(result)
-  }
+  // const GetHomelist=async()=>{
+  //   let result=await fetchData({
+  //     method: "GET",
+  //     url: '/v2/pweb/rank_type_list',
+  //   })
+  //   console.log(result)
+  // }
   
-  useEffect(()=>{
-    GetHomelist()
-  },[])
+  // useEffect(()=>{
+  //   GetHomelist()
+  // },[])
   const items = colors.map((color, index) => (
     <Swiper.Item key={index}>
       <div className={styles.content} style={{ background: color }}>

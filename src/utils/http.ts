@@ -1,6 +1,5 @@
 import 'whatwg-fetch'
 import 'es6-promise'
-
 export function fetchGet(url: string, params?: any) {
     const obj = params ? obj2params(params) : ""
     //fetch(请求url,请求的配置) ，会返回一个promise对象
@@ -41,7 +40,6 @@ export function fetchPost(url: string, params?: any) {
     })
 }
 
-
 // 将对象拼接成 key1=val1&key2=val2&key3=val3 的字符串形式
 // {name:zhangsan,age:123} ---> name=zhangsan&age=123
 function obj2params(obj: any) {
@@ -55,7 +53,5 @@ function obj2params(obj: any) {
     }
     return result;
 }
-
-
 
 export { }
