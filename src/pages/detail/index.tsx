@@ -47,7 +47,10 @@ const Detail: FC = () => {
                             style={{ borderRadius: 10 }}
                             fit='fill'
                             width={168}
-                            height={94} />
+                            height={94} onClick={()=>{
+                                console.log(item.id)
+                                navigate(`/bookdetail?id=${item.id}`)
+                            }}/>
                     }
                         description={item.title}
                     >

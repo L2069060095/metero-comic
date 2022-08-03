@@ -92,7 +92,7 @@ const Find: FC = () => {
       key={index}
       onClick={() => {
         console.log(item.target_id);
-        navigate(`/ycdetail?${item.target_id}`);
+        navigate(`/bookdetail?id=${item.target_id}`);
       }}
     >
       <Image src={item.image_url} fit="fill" />

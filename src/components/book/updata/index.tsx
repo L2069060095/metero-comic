@@ -3,11 +3,13 @@ import { Divider } from "antd-mobile";
 import { Swiper, Image, Popover } from "antd-mobile";
 import React, { FC } from "react";
 import "./index.scss";
-import { useState } from "react";
+import { useState ,} from "react";
 import { AntOutline } from 'antd-mobile-icons'
+import { useNavigate } from "react-router";
 
 const DU: FC<any> = (props) => {
   let [currentIndex,setcurrentIndex]=useState(0)
+  const navigate=useNavigate()
   return (
     <div className="DU">
       {/* {JSON.stringify(props.daily_topics)} */}
@@ -43,7 +45,10 @@ const DU: FC<any> = (props) => {
           loop
         >
           {props.daily_topics.map((item, index) => (
-            <Swiper.Item key={index}>
+            <Swiper.Item key={index} onClick={()=>{
+              console.log(item)
+              navigate(`/detail?id=${item.id}`)
+            }}>
               <Image src={item.cover_image_url} fit="cover"></Image>
               <div className="likes_count"><AntOutline />{item.likes_count}</div>
               {/* <div className="tags">{item.tags}</div> */}
