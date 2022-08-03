@@ -4,7 +4,9 @@ import {
     PayCircleOutline,
     SetOutline,
 } from 'antd-mobile-icons'
-import { Dropdown, Radio, Space, Swiper, List } from 'antd-mobile'
+import { Dropdown, Space, List, Image, } from 'antd-mobile'
+
+import { List as VirtualizedList, AutoSizer } from 'react-virtualized'
 
 //两个都是react-redux的钩子函数
 import { useSelector, useDispatch } from 'react-redux'
@@ -44,6 +46,40 @@ const Center: FC = (props: any) => {
         </div>
         <Dropdown>
             <Dropdown.Item key='sorter' title='浏览记录'>
+                <div>
+                    <List>
+                        {userdatas[0].history!=undefined&&userdatas[0].history.payload.newhistory.map(user => (
+                            <List.Item
+                                key={user.name}
+                                prefix={
+                                    <Image
+                                        src={user.vertiacl_img_url}
+                                        style={{ borderRadius: 20 }}
+                                        fit='cover'
+                                        width={60}
+                                        height={60}
+                                    />
+                                }
+                                description={user.name}
+                                style={{ color: "orange", fontSize: "12px", margin: "10px 0" }}
+                            >
+                                {user.name}
+                                {/* <AutoSizer disableHeight>
+                                    {({ width }: { width: number }) => (
+                                        <VirtualizedList
+                                            rowCount={20}
+                                            rowRenderer={10}
+                                            width={width}
+                                            height={480}
+                                            rowHeight={60}
+                                            overscanRowCount={10}
+                                        />
+                                    )}
+                                </AutoSizer> */}
+                            </List.Item>
+                        ))}
+                    </List>
+                </div>
             </Dropdown.Item>
             <Dropdown.Item key='bizop' title='书架'>
             </Dropdown.Item>

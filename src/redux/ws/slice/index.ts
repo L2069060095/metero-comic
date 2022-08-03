@@ -26,8 +26,6 @@ export const counterSlice = createSlice({
 
         //添加历史记录
         addhistory: (state: any, newhistory: any) => {
-            state.userdatas[0].history = newhistory
-
             if (state.userdatas[0].history === undefined) {
                 state.userdatas[0].history = newhistory
             }
