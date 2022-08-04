@@ -1,0 +1,11 @@
+.BK {
+    position: relative;
+    padding-top: 50px;
+    .adm-nav-bar {
+        position: fixed;
+        top     : 0px;
+        z-index: 1;
+        background: white;
+        width: 100%;
+    }
+}

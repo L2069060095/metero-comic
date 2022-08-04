@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar, Tabs, Button, Toast, Space } from "antd-mobile";
+import { NavBar, Tabs, PullToRefresh, Toast, Space } from "antd-mobile";
 import "./index.scss";
 import Find from "../../components/book/find";
 import { SearchOutline } from "antd-mobile-icons";
@@ -31,31 +31,36 @@ function Book() {
   // );
 
   return (
-    <div>
-      {/* <NavBar
+    <PullToRefresh>
+      <div>
+        {/* <NavBar
         right={right}
         back={null}
         style={{ background: "var(--adm-color-warning)", fontWeight: "700" }}
       >
         快看漫画
       </NavBar> */}
-      <div className="searchlogo" style={{ fontSize: 24 }}>
-        <Space style={{ "--gap": "16px" }}>
-          <SearchOutline onClick={() => navigate(`/search`)} />
-        </Space>
+
+        <div className="find">
+          <div className="searchlogo" style={{ fontSize: 24 }}>
+            <Space style={{ "--gap": "16px" }}>
+              <SearchOutline onClick={() => navigate(`/search`)} />
+            </Space>
+          </div>
+          <Tabs>
+            <Tabs.Tab title="发现" key="find">
+              <Find></Find>
+            </Tabs.Tab>
+            <Tabs.Tab title="热门" key="hot">
+              {!hloading && <Hot list={hdata}></Hot>}
+            </Tabs.Tab>
+            <Tabs.Tab title="关注" key="follow">
+              <FL></FL>
+            </Tabs.Tab>
+          </Tabs>
+        </div>
       </div>
-      <Tabs>
-        <Tabs.Tab title="发现" key="find">
-          <Find></Find>
-        </Tabs.Tab>
-        <Tabs.Tab title="热门" key="hot">
-          {!hloading && <Hot list={hdata}></Hot>}
-        </Tabs.Tab>
-        <Tabs.Tab title="关注" key="follow" >
-          <FL></FL>
-        </Tabs.Tab>
-      </Tabs>
-    </div>
+    </PullToRefresh>
   );
 }
 

@@ -37,12 +37,11 @@ const DU: FC<any> = (props) => {
         <Swiper
           direction="vertical"
           trackOffset={10}
-          slideSize={80}
+          slideSize={90}
           stuckAtBoundary={false}
           style={{ "--height": "200px" }}
           indicator={() => null}
           autoplay
-          loop
         >
           {props.daily_topics.map((item, index) => (
             <Swiper.Item key={index} onClick={()=>{

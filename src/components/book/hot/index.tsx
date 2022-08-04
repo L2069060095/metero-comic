@@ -23,13 +23,19 @@ const Hot: FC<any> = (props) => {
 
  
   return (
+    
     <div className={styles.all}>
+
+      <div className="Hot">
+      
       <Tabs
         onChange={(id: any) => {
           setid1(id);
         }}
-        style={{ backgroundColor: color1 }}
+        style={{ backgroundColor: color1 ,'--fixed-active-line-width': '0px'}}
         className={styles.tab}
+
+        activeLineMode='fixed'
       >
         {props.list.ranks.map((item: any) => (
           <Tabs.Tab
@@ -43,7 +49,7 @@ const Hot: FC<any> = (props) => {
             {item.topics.map((item1: any, index: any) => (
               <List key={index}>
                 <List.Item
-                  onClick={()=>navigate('/test',{ state: item1.id })}
+                  onClick={()=>navigate(`detail?id=${item1.id}`)}
                   style={{ backgroundColor: color2 }}
                   className={styles.tabs}
                   prefix={
@@ -97,6 +103,7 @@ const Hot: FC<any> = (props) => {
           </Tabs.Tab>
         ))}
       </Tabs>
+      </div>
     </div>
   );
 };
