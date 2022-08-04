@@ -5,7 +5,7 @@ import {
     SetOutline,
 } from 'antd-mobile-icons'
 import { Dropdown, Space, List, Image, Avatar, } from 'antd-mobile'
-
+import 'react-virtualized/styles.css' 
 import { List as VirtualizedList, AutoSizer } from 'react-virtualized'
 
 //两个都是react-redux的钩子函数
@@ -48,6 +48,11 @@ const Center: FC = (props: any) => {
 
     const img = "https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
 
+    const toshoucang=()=>{
+        console.log("xxxx")
+        navigate("/shoucang")
+    }
+    
     return <div style={{ padding: '2%' }}>
 
         <img src={userdatas.length == 0 ? img : userdatas[0].payload.newuser.img[0].url} style={{ width: "15%", height: "15%", borderRadius: "50%", marginLeft: "42.5%", marginTop: "5%" }}></img>
@@ -55,7 +60,7 @@ const Center: FC = (props: any) => {
         <p style={{ textAlign: "center" }}>{userdatas.length == 0 ? "默认用户" : userdatas[0].payload.newuser.username}</p>
         <div style={{ marginTop: "10%" }}>
             <Space wrap style={{ fontSize: 22, marginLeft: "13%" }}><ClockCircleFill /></Space>
-            <Space wrap style={{ fontSize: 22, marginLeft: "28%" }}><HistogramOutline /></Space>
+            <Space wrap style={{ fontSize: 22, marginLeft: "28%" }} onClick={toshoucang}><HistogramOutline /></Space>
             <Space wrap style={{ fontSize: 22, marginLeft: "27%" }}><HeartOutline /></Space>
         </div>
         <Dropdown>

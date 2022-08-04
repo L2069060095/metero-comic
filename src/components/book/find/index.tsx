@@ -8,35 +8,42 @@ import {
   Grid,
   Image,
   CapsuleTabs,
-  Button,
+  Toast,
 } from "antd-mobile";
-import "./index.scss";
 import useFetch from "../../../hooks/useFetch";
 import {
-  AntOutline,
-  RightOutline,
   EyeInvisibleOutline,
+  HeartFill,
   AddOutline,
-  StarFill,
-  HeartFill
+  HeartOutline,
 } from "antd-mobile-icons";
 import { useNavigate } from "react-router";
-
-//两个都是react-redux的钩子函数
-// import { useSelector, useDispatch } from 'react-redux'
-//之前counterSlice导出的方法就直接用在组件上 直接引入指定切片中定义的方法
-// import { delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../../redux/ws/slice"
-
+import "./index.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { AddidList, DeleteidList } from "../../../redux/hl/slice";
 const Find: FC = () => {
-  // 通过useSelector钩子函数，来获取store中指定切片中的数据  就相当于vuex中的mapState函数
-  // const userdatas = useSelector((store: any) => store.ws_userdatas.userdatas)
-  // // 通过dispatch钩子函数，传入切片中定义的方法，进行数据的操控
-  // const dispatch = useDispatch()
+  const idList = useSelector((store: any) => store.hl_userdatas.idlist);
+  // 通过dispatch钩子函数，传入切片中定义的方法，进行数据的操控
+  const dispatch = useDispatch();
+  const addidList: any = (item) => {
+    console.log(item, "123456789");
+    dispatch(
+      AddidList({
+        type: "hl_userdatas/AddidList",
+        item: item,
+      })
+    );
+  };
 
-  // const addcollection = (list, index) => {
-  //   console.log(list, index)
-  //   dispatch(addCollection({ type: "ws_userdatas/addCollection", newcollection: [{ id: list[index].id, title: list[index].title, vertiacl_img_url: list[index].cover_image_url }] }))
-  // }
+  const deleteidList: any = (item) => {
+    console.log(item, "123456789");
+    dispatch(
+      DeleteidList({
+        type: "hl_userdatas/DeleteidList",
+        item: item,
+      })
+    );
+  };
 
   // 轮播图数据
   let [bannerslist, setbannerslist] = useState([]);
@@ -49,14 +56,10 @@ const Find: FC = () => {
   let [isLoggedIn, setisLoggedIn] = useState(false);
   const navigate = useNavigate();
   const [placement, setPlacement] = useState("top");
-
   let [isActive, seisActiv] = useState(0);
+  let [currentid, setcurrentid] = useState(0);
   let [YClist, setYClist] = useState<any>([]);
   let [discovery_modules, setdiscovery_modules] = useState([]);
-  let [popularity_topics, setpopularity_topics] = useState([]);
-  let [ranks, setranks] = useState([]);
-  let [rec_topics, setrec_topics] = useState([]);
-  let [ugc_topics, setugc_topics] = useState([]);
   const { loading: loading3, fetchData } = useFetch<any>({}, false);
   const GetHomelist = async () => {
     let result = await fetchData({
@@ -85,13 +88,6 @@ const Find: FC = () => {
     setYClist([YClist, ...result]);
   };
   // console.log(daily_topics,'123')
-  const GetbookDetail = async (data) => {
-    let result = await fetchData({
-      method: "get",
-      url: `/v2/pweb/topic/${data} `,
-    });
-    console.log(result.topic_info, "123456");
-  };
   const GetupdateList = async (data) => {
     let result = await fetchData({
       method: "get",
@@ -114,34 +110,41 @@ const Find: FC = () => {
       }}
     >
       <Image src={item.image_url} fit="fill" />
-
-
     </Swiper.Item>
   ));
 
   function Follow(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
+    if (idList.includes(props.id)) {
       return (
-        <Button
-          onClick={(e) => {
-            setisLoggedIn(!isLoggedIn);
-            console.log(e);
+        <HeartFill
+          color="var(--adm-color-warning)"
+          fontSize={20}
+          onClick={() => {
+            deleteidList(props.id);
+            Toast.show({
+              content: '我丢，别走啊ε(┬┬﹏┬┬)3',
+              afterClose: () => {
+                console.log('after')
+              },
+            })
           }}
-        >
-          1
-        </Button>
+        />
       );
     } else
       return (
-        <Button
+        <HeartOutline
+          fontSize={20}
+          color="var(--adm-color-warning)"
           onClick={() => {
-            setisLoggedIn(!isLoggedIn);
-            console.log(isLoggedIn);
+            addidList(props.id);
+            Toast.show({
+              content: '入股不亏~\(≥▽≤)/~',
+              afterClose: () => {
+                console.log('after')
+              },
+            })
           }}
-        >
-          2
-        </Button>
+        />
       );
   }
 
@@ -171,7 +174,7 @@ const Find: FC = () => {
       </div>
       <div className="YC">
         <div className="YC_header">
-          <Grid columns={4}>
+          <Grid columns={4} style={{ background: "white" }}>
             <Grid.Item span={1}>
               <div style={{ fontSize: 16 }}>原创投稿</div>
             </Grid.Item>
@@ -203,25 +206,39 @@ const Find: FC = () => {
                 最新上架
               </div>
             </Grid.Item>
-            <Grid.Item span={1}>
-              <button>更多</button>
-            </Grid.Item>
           </Grid>
         </div>
         <div className="YC_body">
           {YClist.slice(1, 7).map((item, index) => (
             <div key={index} className="YC_body_item">
-              <Image src={item.cover_image_url} fit="cover" />
-              <div>{item.title}</div>
+              <Image
+                src={item.cover_image_url}
+                fit="cover"
+                onClick={() => {
+                  console.log(item.id);
+                  navigate(`/detail?id=${item.id}`);
+                }}
+              />
+              <div
+                onClick={() => {
+                  console.log(item.id);
+                  navigate(`/detail?id=${item.id}`);
+                }}
+                style={{ marginTop: "8px" }}
+              >
+                {item.title}
+              </div>
               <div className="imgfooter">
-                <div className="nickname">{item.user.nickname}</div>
+                <div
+                  className="nickname"
+                  onClick={() => {
+                    navigate(`/user?id=${item.user.user_id}`);
+                  }}
+                >
+                  {item.user.nickname}
+                </div>
                 <div className="likes_count">{item.likes_count}</div>
               </div>
-              {/* <ul>
-                {item.tags.map((tagsitem,tagsindex)=>(
-                  <li>{tagsitem}</li>
-                ))}
-              </ul> */}
             </div>
           ))}
         </div>
@@ -238,11 +255,13 @@ const Find: FC = () => {
             <div className="ST_body_item" key={index}>
               <div className="ST_body_item_header">
                 <div className="ST_body_item_header_title">{item.title}</div>
-                {/* 按钮 */}
-                <Follow isLoggedIn={isLoggedIn}></Follow>
-                {/* <div style={{ color: "orange", fontSize: 26, marginLeft: "70%", float: "left" }} onClick={() => addcollection(discovery_modules, index)}>
-                  <HeartFill />
-                </div> */}
+
+                <Follow
+                  currentid={currentid}
+                  isLoggedIn={isLoggedIn}
+                  id={item.id}
+                ></Follow>
+
               </div>
               <Space>
                 {item.tags.map((tagsitem, tagsindex) => (
@@ -255,7 +274,13 @@ const Find: FC = () => {
                 </Tag>
               </Space>
 
-              <Image src={item.cover_image_url} fit="cover" />
+              <Image
+                src={item.cover_image_url}
+                fit="cover"
+                onClick={() => {
+                  navigate(`/detail?id=${item.id}`);
+                }}
+              />
               <div className="ST_body_item_footer">
                 <div className="nickname">{item.user.nickname}</div>
                 <div className="likes_count">

@@ -1,6 +1,8 @@
-// 切片  即存储在store中的一片一片的数据(数据+操作数据的方法)  比如说，它可以是单个人的数据  也可以是一个类型的数据
+// 切片  即存储在store中的一片一片的数据(数据+操作数据的方法) 
+// 比如说，它可以是单个人的数据  也可以是一个类型的数据
 
 import { createSlice } from '@reduxjs/toolkit' // 引入createSlice方法  切片
+
 
 //创建一个切片
 export const counterSlice = createSlice({
@@ -16,6 +18,7 @@ export const counterSlice = createSlice({
         adduser: (state: any, newuser: any) => {
             console.log(state.userdatas)
             state.userdatas.push(newuser)
+           
         },
 
         // 删除用户
@@ -23,6 +26,7 @@ export const counterSlice = createSlice({
             state.userdatas = state.userdatas.filter((item: any) => {
                 return item.payload.newuser.username === newuser.username
             })
+           
         },
 
         //添加历史记录
@@ -36,6 +40,7 @@ export const counterSlice = createSlice({
                 })
                 state.userdatas[0].history.payload.newhistory.push(newhistory.payload.newhistory[0])
             }
+            
         },
 
         // 删除历史记录
@@ -43,6 +48,7 @@ export const counterSlice = createSlice({
             state.userdatas[0].history.payload.newhistory = state.userdatas[0].history.payload.newhistory.filter((item: any) => {
                 return item.id != delhistory.payload.id
             })
+           
         },
 
         // 添加收藏
@@ -66,6 +72,7 @@ export const counterSlice = createSlice({
                 //    删除不满足条件的对象
                 return item.id != caricatureId.payload.id
             })
+           
         },
 
         // 添加漫画
@@ -80,15 +87,18 @@ export const counterSlice = createSlice({
                     return item.id!==newcaricature.payload.newcaricature[0].id
                 })
                 state.userdatas[0].caricature.payload.newcaricature.push(newcaricature.payload.newcaricature[0])
+                
             }
         },
 
         // 删除漫画
         delCaricature: (state: any, caricatureId: any) => {
+            console.log(caricatureId.payload.id)
             state.userdatas[0].caricature.payload.newcaricature = state.userdatas[0].caricature.payload.newcaricature.filter((item: any) => {
                 //    删除不满足条件的对象
                 return item.id != caricatureId.payload.id
             })
+           
         },
     },
 })

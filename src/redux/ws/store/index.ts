@@ -6,6 +6,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from "../slice/index";
 import historySlice from "../../history"
 import sortSlice from "../../sort"
+import { hlSlice } from '../../../redux/hl/slice';
+import {worldSlice} from '../../flp/sliceflp/worldSlice'
 
 // configureStore创建一个redux数据
 const store = configureStore({
@@ -13,6 +15,8 @@ const store = configureStore({
         ws_userdatas: counterReducer,//这里给定的名字最好与counterSlice中的name相同
         history: historySlice.reducer,
         sort: sortSlice.reducer,
+        hl_userdatas:hlSlice.reducer,
+        worlds: worldSlice.reducer
     },
 });
 
