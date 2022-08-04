@@ -1,0 +1,73 @@
+.data {
+  padding: 0 0 50px 0;
+  font-size: 15px;
+}
+
+.data .userTitle {
+  margin: 8px 0 5px 30px;
+  font-size: 20px;
+}
+
+.data .userdata {
+  margin-left: 20px;
+}
+
+.data .userdata .userimg {
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.data .userdata .userimg .adm-image-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px 0 0 0;
+}
+
+.data .userdata .nickname {
+  margin-left: 8px;
+  vertical-align: middle;
+  height: 40px;
+  display: inline-block;
+}
+
+.data .userCreate {
+  margin: 3px 0;
+  font-size: 15px;
+}
+
+.data .userCreate span {
+  padding: 2px;
+  border: 1px solid gray;
+  margin: 0 5px;
+  color: darkorange;
+}
+
+.data .userSummary {
+  margin: 10px 0 10px 8px;
+}
+
+.data .originCreate span {
+  margin-left: 4px;
+  color: darkorange;
+  padding: 3px;
+  border: 1px solid gray;
+}
+
+.data .labelName {
+  margin: 5px 0;
+}
+
+.data .labelName .marks {
+  margin-left: 4px;
+  padding: 2px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  color: darkorange;
+}
+
+.data .userStr span {
+  margin: 0 5px;
+}

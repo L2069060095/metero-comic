@@ -79,20 +79,7 @@ const Center: FC = (props: any) => {
                 }
                 )}
             </Dropdown.Item>
-            <Dropdown.Item key='bizop' title='书架'>
-                {caricatureflag && userdatas[0].caricature.payload.newcaricature.map(user => {
-                    return <div key={user.id} style={{ padding: "20px 10px 0px 10px", display: "flex" }}>
-                        <Image
-                            src={user.vertiacl_img_url}
-                            style={{ borderRadius: 20, flex: 1, marginRight: "10px" }}
-                            fit='cover'
-                            width={60}
-                            height={60}
-                        />
-                        <span style={{ color: "orange", fontSize: "14px", flex: 5, marginTop: "20px" }}>{user.title}</span>
-                    </div>
-                })}
-
+            <Dropdown.Item key='bizop' title='书架' destroyOnClose>
             </Dropdown.Item>
             <Dropdown.Item key='more' title='收藏'>
                 {collectionflag && userdatas[0].collection.payload.newcollection.map(user => {

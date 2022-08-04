@@ -41,6 +41,7 @@ const Shoucang: FC = (): any => {
         axios.post("http://localhost:3000/api/addcaricature", {
             paramsObj: { username: userdatas[0].payload.newuser.username, password: userdatas[0].payload.newuser.password, img: userdatas[0].payload.newuser.img, caricature: userdatas[0].caricature.payload.newcaricature }//数组
         })
+        
     }
 
     return <div style={{ padding: "0 0 50px 0" }}>

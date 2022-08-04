@@ -31,9 +31,9 @@
         font-size: 15px;
         span{
             padding: 2px;
-            border: 1px solid black;
+            border: 1px solid gray;
             margin: 0 5px;
-            color: red;
+            color: rgb(255, 140, 0);
 
         }
     }
@@ -42,14 +42,16 @@
     }
     .originCreate{
          span{
-            color: red;
+            margin-left: 4px;
+            color: rgb(255, 140, 0);
              padding: 3px;
-             border: 1px solid black;
+             border: 1px solid gray;
          }
     }
     .labelName{
         margin: 5px 0;
         .marks{
+            margin-left: 4px;
             padding: 2px;
             border: 1px solid gray;
             border-radius: 50%;
