@@ -7,6 +7,8 @@
             .adm-list-body-inner {
                 .adm-list-item {
                     float: left;
+                    width: 70px;
+                    text-align: center;
                     background-color: rgb(32, 32, 32);
                     border-radius: 20%;
                     margin-left: 5px;
@@ -52,7 +54,7 @@
                     overflow: hidden;
                 }
                 .Book_introduce {
-                    //display: -webkit-box; （兼容性）
+                    // display: -webkit-box; （兼容性）
                     // -webkit-line-clamp:3;（指定显示行数）
                     // -webkit-box-orient: vertical;（文本垂直排列）
                     // overflow: hidden; （多余部分隐藏）
@@ -78,6 +80,12 @@
         a {
             text-decoration: none;
             color: orangered;
+        }
+    }
+    .adm-capsule-tabs-tab-wrapper {
+        // background-color: var(--adm-color-warning);
+        .adm-capsule-tabs-tab {
+            background-color: var(--adm-color-warning);
         }
     }
 }
