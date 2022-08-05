@@ -3,7 +3,7 @@
 
 import { createSlice } from '@reduxjs/toolkit' // 引入createSlice方法  切片
 
-
+import axios from 'axios'
 //创建一个切片
 export const counterSlice = createSlice({
     // 该切片的名字
@@ -87,7 +87,10 @@ export const counterSlice = createSlice({
                     return item.id!==newcaricature.payload.newcaricature[0].id
                 })
                 state.userdatas[0].caricature.payload.newcaricature.push(newcaricature.payload.newcaricature[0])
-                
+                // 处理异步问题
+                axios.post("http://localhost:3000/api/addcaricature", {
+                    paramsObj: { username: state.userdatas[0].payload.newuser.username, password: state.userdatas[0].payload.newuser.password, img: state.userdatas[0].payload.newuser.img, caricature: state.userdatas[0].caricature.payload.newcaricature }//数组
+                })
             }
         },
 
@@ -98,7 +101,11 @@ export const counterSlice = createSlice({
                 //    删除不满足条件的对象
                 return item.id != caricatureId.payload.id
             })
-           
+           console.log(state.userdatas[0].caricature.payload.newcaricature)
+        //    这里注意，必须要向数据库提交删除过后的最新的数据，处理异步问题
+           axios.post("http://localhost:3000/api/addcaricature", {
+            paramsObj: { username: state.userdatas[0].payload.newuser.username, password: state.userdatas[0].payload.newuser.password, img: state.userdatas[0].payload.newuser.img, caricature: state.userdatas[0].caricature.payload.newcaricature }//数组
+        })
         },
     },
 })

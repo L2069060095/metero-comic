@@ -3,9 +3,9 @@ import React, { FC } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { addhistory, delhistory, addCollection, delCollection, addCaricature, delCaricature } from "../../../redux/ws/slice"
 
-import { Card ,Toast} from "antd-mobile"
+import { Card, Toast } from "antd-mobile"
 
-import { DeleteOutline } from "antd-mobile-icons"
+import { DeleteOutline, LikeOutline, FrownOutline } from "antd-mobile-icons"
 
 import Nav2 from "../nav2/nav2";
 
@@ -21,6 +21,8 @@ const Shoucang: FC = (): any => {
     var historyflag = false
     var caricatureflag = false
     var collectionflag = false
+    var payload = false
+    var flag = false
     for (const iterator in userdatas[0]) {
         if (iterator === "history") {
             historyflag = !historyflag
@@ -29,24 +31,35 @@ const Shoucang: FC = (): any => {
         } else if (iterator === "collection") {
             collectionflag = !collectionflag
         }
+        else if (iterator === "payload") {
+            payload = !payload
+        }
     }
+    if (payload == true) {
+        if (caricatureflag == false) {
+            flag = !flag
+        }
+    }
+
 
     const del = (id) => {
         Toast.show({
             icon: 'success',
-            content:"删除成功！",
-          })
-        console.log(id, "xxxxxxxxx")
-        dispatch(delCaricature({ type: "ws_userdatas/delCaricature", id: id }))
-        axios.post("http://localhost:3000/api/addcaricature", {
-            paramsObj: { username: userdatas[0].payload.newuser.username, password: userdatas[0].payload.newuser.password, img: userdatas[0].payload.newuser.img, caricature: userdatas[0].caricature.payload.newcaricature }//数组
+            content: "删除成功！",
         })
-        
+        console.log(id, "xxxxxxxxx")
+        let datas = dispatch(delCaricature({ type: "ws_userdatas/delCaricature", id: id }))
+        console.log(datas, "fromdel")
+        // axios.post("http://localhost:3000/api/addcaricature", {
+        //     paramsObj: { username: userdatas[0].payload.newuser.username, password: userdatas[0].payload.newuser.password, img: userdatas[0].payload.newuser.img, caricature: userdatas[0].caricature.payload.newcaricature }//数组
+        // })
     }
 
     return <div style={{ padding: "0 0 50px 0" }}>
         <Nav2></Nav2>
         <div style={{ backgroundColor: "#eee", width: "100%", color: "#eee", height: "55px" }}></div>
+        {!payload && <div style={{ color: "orange", textAlign: "center", fontSize: "26px", marginTop: "60%" }}><FrownOutline /><p style={{ color: "#ccc", textAlign: "center", fontSize: "26px" }}>请先登录！</p></div>}
+        {flag && <div style={{ color: "orange", textAlign: "center", fontSize: "26px", marginTop: "60%" }}><LikeOutline /><p style={{ color: "#ccc", textAlign: "center", fontSize: "18px" }}>逛逛书城，添加喜欢的漫画吧！</p></div>}
         {caricatureflag && userdatas[0].caricature.payload.newcaricature.map((item: any) => {
             return <div style={{ backgroundColor: '#eee', padding: "10px 10px" }} key={item.id}>
                 <Card title={item.title} style={{}}>
@@ -57,6 +70,7 @@ const Shoucang: FC = (): any => {
         })
 
         }
+
     </div>
 }
 

@@ -50,10 +50,7 @@ const Detail: FC = () => {
             icon: 'success',
             content:"添加成功！",
           })
-        await dispatch(addCaricature({ type: "ws_userdatas/addCaricature", newcaricature: [{ id: a[0].id, title: a[0].title, vertiacl_img_url: a[0].cover_image_url }] }))
-        await axios.post("http://localhost:3000/api/addcaricature", {
-            paramsObj: { username: userdatas[0].payload.newuser.username, password: userdatas[0].payload.newuser.password, img: userdatas[0].payload.newuser.img, caricature: userdatas[0].caricature.payload.newcaricature }//数组
-        })
+        dispatch(addCaricature({ type: "ws_userdatas/addCaricature", newcaricature: [{ id: a[0].id, title: a[0].title, vertiacl_img_url: a[0].cover_image_url }] }))
     }
 
     // // 添加数据到数据库
