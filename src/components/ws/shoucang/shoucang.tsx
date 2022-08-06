@@ -68,9 +68,7 @@ const Shoucang: FC = (): any => {
                 </Card>
             </div>
         })
-
         }
-
     </div>
 }
 

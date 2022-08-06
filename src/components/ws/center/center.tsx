@@ -6,7 +6,8 @@ import {
     MovieOutline,
     FireFill,
     ShopbagOutline,
-    CloseCircleFill
+    CloseCircleFill,
+    RightOutline
 } from 'antd-mobile-icons'
 import { Dropdown, Space, List, Swiper } from 'antd-mobile'
 import 'react-virtualized/styles.css'
@@ -53,7 +54,7 @@ const Center: FC = (props: any) => {
     }
 
     // 默认头像
-    const img = "https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+    const img = "https://www.51xuediannao.com/uploads/allimg/140105/1-140105144547.gif"
 
     const toshoucang = () => {
         console.log("xxxx")
@@ -74,19 +75,19 @@ const Center: FC = (props: any) => {
 
     return <div style={{ padding: '5% 5% 12% 5%' }}>
 
-        <img src={userdatas.length == 0 ? img : userdatas[0].payload.newuser.img[0].url} style={{ width: "16%", height: "16%", borderRadius: "50%", marginLeft: "42%", marginTop: "10%" }}></img>
+        <img src={userdatas.length == 0 ? img : userdatas[0].payload.newuser.img[0].url} style={{ width: "14%", height: "20%", borderRadius: "50%", marginLeft: "42%", marginTop: "10%" }}></img>
 
         <p style={{ textAlign: "center" }}><span>用户名：</span>{userdatas.length == 0 ? "默认用户" : <span style={{fontSize:"12px"}}>{userdatas[0].payload.newuser.username}</span>}</p>
         <div style={{ marginTop: "10%" }}>
-            <Space wrap style={{ fontSize: 22, marginLeft: "14%" ,color:"#ccc"}}><ClockCircleFill /></Space>
+            <Space wrap style={{ fontSize: 22, marginLeft: "14%" ,color:"#666"}}><ClockCircleFill /></Space>
 
-            <Space wrap style={{ fontSize: 22, marginLeft: "28%",color:"#ccc" }} onClick={toshoucang}><HistogramOutline /></Space>
+            <Space wrap style={{ fontSize: 22, marginLeft: "28%",color:"#666" }} onClick={toshoucang}><HistogramOutline /></Space>
 
-            <Space wrap style={{ fontSize: 22, marginLeft: "28%",color:"#ccc"  }}><HeartOutline /></Space>
+            <Space wrap style={{ fontSize: 22, marginLeft: "28%",color:"#666"  }}><HeartOutline /></Space>
         </div>
         <div style={{ display: "flex", marginTop: "10px" }}><span style={{ flex: "1", textAlign: "center" }}>历史记录</span><span style={{ flex: "1", textAlign: "center" }}>书架</span><span style={{ flex: "1", textAlign: "center" }}>关注</span></div>
         <div style={{ backgroundColor: "#fff" }}>
-            <p style={{ backgroundColor:"#eee" ,color:"purple",padding:"6px",borderRadius:"10px"}}>快看VIP<span style={{ color: "purple", marginLeft: "35%" }}>开通会员每日领取KK币</span></p>
+            <p style={{ backgroundColor:"#eee" ,color:"purple",padding:"6px",borderRadius:"10px"}}>快看VIP<span style={{ color: "green", marginLeft: "45%" }}>开通会员每日领取KK币<RightOutline /></span></p>
         </div>
 
         {/* 轮播 */}

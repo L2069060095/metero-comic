@@ -14,6 +14,7 @@ import Slist from "../components/search/list";
 // ws
 import Login from "../components/ws/nav/login/login";
 import Zhuce from "../components/ws/nav/login/zhuce/zhuce";
+import {Ceshi} from "../components/ws/ceshi/ceshi"
 import BD from "../pages/bookdetail";
 
 import Shoucang from "../../src/components/ws/shoucang/shoucang"
@@ -36,7 +37,7 @@ function RouterMap() {
       <Route path="/detail" element={<Detail></Detail>}></Route>
       <Route path="/ser_detail" element={<Slist></Slist>}></Route>
       <Route path="/bookdetail" element={<BD></BD>}></Route>
-
+      <Route path="/ceshi" element={<Ceshi></Ceshi>}></Route>
       <Route path="/Shoucang" element={<Shoucang></Shoucang>}></Route>
 
       <Route path="/world/detail" element={<WorldDetail></WorldDetail>}></Route>

@@ -48,7 +48,7 @@ const Nav: FC = () => {
     }
 
     return <div>
-        <NavBar className="nav" onBack={back} backArrow={true} left={<img src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo" style={{ width: "60%", height: "60%",marginLeft:"-35%" }} ></img>} right={userdatas.length == 0 && <Button style={{ marginLeft:"-10%" }} color='warning' size="mini" onClick={login}>登录</Button> }>
+        <NavBar className="nav" onBack={back} backArrow={true} left={<img src="https://cdn.imgcn.top/20191017/e04d24c194da5f799b4f82a3acab5261.jpg!logo" style={{ width: "60%", height: "60%",marginLeft:"-35%" }} ></img>} right={userdatas.length == 0 && <Button style={{ marginRight:"40%" }} color='warning' size="mini" onClick={login}>登录</Button> }>
             {/* 搜索框 */}
             <SearchBar
                 placeholder='请输入内容'

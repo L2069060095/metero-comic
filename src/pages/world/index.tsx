@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from 'react-redux'
 //写在redux的方法
 import { addworldData } from "../../redux/flp/sliceflp/worldSlice";
 
+//ws
+import { Ceshi } from "../../components/ws/ceshi/ceshi";
+
 //普通函数是没法返回JSX的，所以这里用FC声明函数组件
 const World: FC = () => {
     const dispatch = useDispatch()
@@ -35,18 +38,30 @@ const World: FC = () => {
         dispatch(addworldData({ type: "worlds/addworldData", detaildatas: item }))
         navigate("/world/detail")
     }
-    
+
+    //ws
+    const userdatas = useSelector((store: any) => store.ws_userdatas.userdatas)
+
+    var payload = false
+    for (const iterator in userdatas[0]) {
+        if (iterator === "payload") {
+            payload = !payload
+        }
+    }
+
+
     // 在生命周期中执行副作用操作
     useEffect(() => {
         getWorldData()
     }, [])
     return (
         <div>
+           {!payload&&<div style={{marginTop:"25px"}}><Ceshi></Ceshi></div>}
             <Grid columns={2}>
                 {data.map((item: any, index1: any) => {
                     return <Grid.Item key={item.post.summary}>
                         <div className="dataList" onClick={() => { deliver(item.post) }}>
-                            <Image src={item.post.recommendCover.content} lazy/>
+                            <Image src={item.post.recommendCover.content} lazy />
                             <div className="labelsName" style={{ width: "100%", height: "16px", overflow: "hidden" }}>
                                 <span style={{ fontSize: 12 }}>
                                     {item.post.labels.map((item: any, index: any) => {

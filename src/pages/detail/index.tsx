@@ -36,7 +36,7 @@ const Detail: FC = () => {
     })
 
     var a = []
-    var flag=true
+    var flag = true
 
     for (const key in detailData) {
         if (Object.prototype.hasOwnProperty.call(detailData, key)) {
@@ -48,32 +48,24 @@ const Detail: FC = () => {
     const addbookstore = async () => {
         Toast.show({
             icon: 'success',
-            content:"添加成功！",
-          })
+            content: "添加成功！",
+        })
+        select()
         dispatch(addCaricature({ type: "ws_userdatas/addCaricature", newcaricature: [{ id: a[0].id, title: a[0].title, vertiacl_img_url: a[0].cover_image_url }] }))
     }
 
-    // // 添加数据到数据库
-    // const addshoucang = async () => {
-    //     // console.log(userdatas[0].caricature.payload.newcaricature,"6666666666666")
-    //     let result: any = await axios.post("http://localhost:3000/api/addcaricature", {
-    //         paramsObj: userdatas[0].caricature.payload.newcaricature//数组
-    //     })
-    //     console.log(result)
-    // }
-
     const select = () => {
         userdatas[0].caricature.payload.newcaricature.map((item) => {
-            console.log(item.id, a[0].id, "xxxxxxxxxxxxxxxxxx")
-            if (item.id === a[0].id) {
-                return flag=false
+            console.log(a[0].id, item.id)
+            if (a[0].id ===item.id) {
+                flag = false
             }
         })
     }
 
-    useEffect(()=>{
-        
-    },[])
+    useEffect(() => {
+
+    }, [])
 
     return <div>
         {detailData &&
@@ -96,7 +88,7 @@ const Detail: FC = () => {
                         <span>漫画简介</span>
                         <p>{detailData.topic_info.description}</p>
                     </div>
-                   <div
+                    {flag&&<div
                         style={{
                             color: "orange",
                             fontSize: 28,
@@ -107,7 +99,7 @@ const Detail: FC = () => {
                         onClick={addbookstore}
                     >
                         <StarFill />
-                    </div>
+                    </div>}
                 </div>
                 <section>
                     <List>

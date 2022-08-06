@@ -11,6 +11,9 @@ import FL from "../../components/book/follow";
 //两个都是react-redux的钩子函数
 import { useSelector, useDispatch } from 'react-redux'
 
+// ws
+import { Ceshi } from "../../components/ws/ceshi/ceshi";
+
 
 function Book() {
   const { loading: hloading, data: hdata } = useFetch({
@@ -23,21 +26,9 @@ function Book() {
 
   const userdatas = useSelector((store: any) => store.ws_userdatas.userdatas)
 
-
-  // 判断是否存在history
-  var historyflag = false
-  var caricatureflag = false
-  var collectionflag = false
   var payload = false
   for (const iterator in userdatas[0]) {
-    if (iterator === "history") {
-      historyflag = !historyflag
-    } else if (iterator === "caricature") {
-      caricatureflag = !caricatureflag
-    } else if (iterator === "collection") {
-      collectionflag = !collectionflag
-    }
-    else if (iterator === "payload") {
+    if (iterator === "payload") {
       payload = !payload
     }
   }
@@ -64,13 +55,14 @@ function Book() {
       >
         快看漫画
       </NavBar> */}
-      {payload &&<div className="searchlogo" style={{ fontSize: 24 }}>
+      {payload && <div className="searchlogo" style={{ fontSize: 24 }}>
         <Space style={{ "--gap": "16px" }}>
           <SearchOutline onClick={() => navigate(`/search`)} />
         </Space>
       </div>}
       <Tabs defaultActiveKey='find'>
-        {!payload && <Tabs.Tab title="请先登录欧！" key="find">
+        {!payload && <Tabs.Tab title="" key="find">
+          <Ceshi></Ceshi>
           <Find></Find>
         </Tabs.Tab>}
 
