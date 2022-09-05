@@ -31,6 +31,7 @@
     "react-scripts": "5.0.1",
     "react-virtualized": "^9.22.3",
     "redux": "^4.2.0",
+    "sass": "^1.54.8",
     "scss": "^0.2.4",
     "start": "^5.1.0",
     "taro-ui": "^2.3.4",
